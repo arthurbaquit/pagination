@@ -2751,7 +2751,7 @@ func CreatePeople() {
 		"Zubayr",
 		"Zuriel",
 	}
-	if err := DB.First(&models.Fullname{}).Error; !errors.Is(err, gorm.ErrRecordNotFound) {
+	if err := database.DB.First(&models.Fullname{}).Error; !errors.Is(err, gorm.ErrRecordNotFound) {
 		fmt.Println("Fullname table is not empty")
 		return
 	}
@@ -2767,7 +2767,7 @@ func CreatePeople() {
 			LastName:  lastName,
 		}
 
-		err := DB.Save(&fullname).Error
+		err := database.DB.Save(&fullname).Error
 		if err != nil {
 			log.Fatal("Error while seeding data", err)
 		}
